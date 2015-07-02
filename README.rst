@@ -15,7 +15,7 @@ Quick Start
 
 Simply run on a `Docker`_ Host with `Docker Compose`_ installed::
     
-    $ curl -sSL https://github.com/autodock-paas/blob/master/setup.sh | bash -s
+    $ curl -sSL https://raw.githubusercontent.com/prologic/autodock-paas/master/setup.sh | bash -s
 
 Now whenever you start a new container autodock will listen for Docker events
 and discover containers that have been started. The ``autodock-hipache`` plugin

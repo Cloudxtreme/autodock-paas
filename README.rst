@@ -9,6 +9,7 @@ autodock-paas
 
 This is the `autodock`_ based minimal `Docker`_ based `PaaS`_.
 
+autodock-paas is MIT licensed.
 
 Quick Start
 -----------

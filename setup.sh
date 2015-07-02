@@ -1,6 +1,6 @@
 #!/bin/bash
 
-URL="https://github.com/prologic/autodock-paas/blob/master/docker-compose.yml >>"
+URL="https://raw.githubusercontent.com/prologic/autodock-paas/master/docker-compose.yml"
 FILE="docker-compose.yml"
 
 function die () {
@@ -52,7 +52,8 @@ fi
 
 echo "Installing autodock-paas ..."
 
-curl -sSL -o - $URL >> $FILE
+cat <(curl -sSL -o - $URL) >> $FILE
 
 docker-compose up -d autodock
-docker-compose up -d autodock-hipache
+docker-compose up -d autodocklogger
+docker-compose up -d autodockhipache

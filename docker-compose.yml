@@ -18,7 +18,7 @@ autodockhipache:
     restart: always
 
 hipache:
-    image: hipache:0.2.0
+    image: hipache:0.2.8
     ports:
         - "80:80/tcp"
         - "443:443/tcp"

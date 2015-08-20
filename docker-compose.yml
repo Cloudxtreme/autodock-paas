@@ -18,7 +18,15 @@ autodockhipache:
     restart: always
 
 hipache:
-    image: hipache:0.2.8
+    image: prologic/hipache
     ports:
-        - "80:80/tcp"
-        - "443:443/tcp"
+        - "80:80"
+        - "443:443"
+    restart: always
+
+hello:
+    image: prologic/hello
+    environment:
+        - VIRTUALHOST=hello.mydomain.com
+        - ALIAS=hello.local
+    restart: always

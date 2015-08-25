@@ -37,3 +37,15 @@ pointing to your ``hipache`` container you can now visit http://hello.local/
     Hello World!
 
 .. note:: This method of hosting and managing webapps and websites is in production deployments and talked about in more detail in the post `A Docker-based mini-PaaS <http://shortcircuit.net.au/~prologic/blog/article/2015/03/24/a-docker-based-mini-paas/>`_.
+
+Creating SSL Certificates
+-------------------------
+
+Use either the ``mksslcert`` from the OpenSSL package. Example:
+
+.. code-block:: bash
+    
+    mkdir -p etc/hipache/ssl
+    mksslcert ssl/hipache/ssl/ssl.key ssl/hipache/ssl/ssl.crt '*.mydomain.com'
+
+Or this nice Docker Image: `cpuguy83/sslgen <https://hub.docker.com/r/cpuguy83/sslgen/>`_

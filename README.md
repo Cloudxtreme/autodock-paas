@@ -27,3 +27,15 @@ Now assuming you had `hello.local` configured in your `/etc/hosts` pointing to y
 > **note**
 >
 > This method of hosting and managing webapps and websites is in production deployments and talked about in more detail in the post [A Docker-based mini-PaaS](http://shortcircuit.net.au/~prologic/blog/article/2015/03/24/a-docker-based-mini-paas/).
+
+Creating SSL Certificates
+-------------------------
+
+Use either the `mksslcert` from the OpenSSL package. Example:
+
+``` sourceCode
+mkdir -p etc/hipache/ssl
+mksslcert ssl/hipache/ssl/ssl.key ssl/hipache/ssl/ssl.crt '*.mydomain.com'
+```
+
+Or this nice Docker Image: [cpuguy83/sslgen](https://hub.docker.com/r/cpuguy83/sslgen/)

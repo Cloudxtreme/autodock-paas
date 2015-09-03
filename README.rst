@@ -1,15 +1,18 @@
 .. _Docker: https://github.com/docker/docker
 .. _Docker Compose: https://github.com/docker/compose
 .. _autodock: https://github.com/prologic/autodock
+.. _autodock-paas: https://github.com/prologic/autodock-paas
 .. _PaaS: https://en.wikipedia.org/wiki/Platform_as_a_service
-
+.. _Stackfiles: https://stackfiles.io/registry/55e76bc25d8ffc010083bc92
 
 autodock-paas
 =============
 
 This is the `autodock`_ based minimal `Docker`_ based `PaaS`_.
 
-autodock-paas is MIT licensed.
+`autodock-paas`_ is MIT licensed.
+
+This stack is also registered over at `Stackfiles`_.
 
 Quick Start
 -----------

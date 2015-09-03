@@ -3,7 +3,9 @@ autodock-paas
 
 This is the [autodock](https://github.com/prologic/autodock) based minimal [Docker](https://github.com/docker/docker) based [PaaS](https://en.wikipedia.org/wiki/Platform_as_a_service).
 
-autodock-paas is MIT licensed.
+[autodock-paas](https://github.com/prologic/autodock-paas) is MIT licensed.
+
+This stack is also registered over at [Stackfiles](https://stackfiles.io/registry/55e76bc25d8ffc010083bc92).
 
 Quick Start
 -----------

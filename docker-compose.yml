@@ -4,6 +4,12 @@ autodock:
         - /var/run/docker.sock:/var/run/docker.sock
     restart: always
 
+autodockcron:
+    image: prologic/autodock-cron
+    links:
+        - autodock
+    restart: always
+
 autodocklogger:
     image: prologic/autodock-logger
     links:

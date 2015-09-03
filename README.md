@@ -40,4 +40,17 @@ mkdir -p etc/hipache/ssl
 mksslcert ssl/hipache/ssl/ssl.key ssl/hipache/ssl/ssl.crt '*.mydomain.com'
 ```
 
-Or this nice Docker Image: [cpuguy83/sslgen](https://hub.docker.com/r/cpuguy83/sslgen/)
+The [prologic/mksslcrt](https://hub.docker.com/r/prologic/mksslcrt/) image uses this tool to automatically created self-signed SSL certificates when run. Examples:
+
+Host mounted vlume:
+
+    $ docker run --rm -v $(pwd):ssl:/ssl mksslcrt '*.mydomain.com'
+
+Data volume container:
+
+    $ docker run --name sslcerts prologic/mksslcrt '*.mydomain.com'
+    $ docker run --volumes-from sslcerts prologic/hipache
+
+Or this nice Docker Image: [cpuguy83/sslgen](https://hub.docker.com/r/cpuguy83/sslgen/).
+
+For signed certificates have a look at [starefossen/sslmate](https://hub.docker.com/r/starefossen/sslmate/).

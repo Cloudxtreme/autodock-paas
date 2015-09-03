@@ -4,6 +4,9 @@
 .. _autodock-paas: https://github.com/prologic/autodock-paas
 .. _PaaS: https://en.wikipedia.org/wiki/Platform_as_a_service
 .. _Stackfiles: https://stackfiles.io/registry/55e76bc25d8ffc010083bc92
+.. _prologic/mksslcrt: https://hub.docker.com/r/prologic/mksslcrt/
+.. _cpuguy83/sslgen: https://hub.docker.com/r/cpuguy83/sslgen/
+.. _starefossen/sslmate: https://hub.docker.com/r/starefossen/sslmate/
 
 autodock-paas
 =============
@@ -51,4 +54,18 @@ Use either the ``mksslcert`` from the OpenSSL package. Example:
     mkdir -p etc/hipache/ssl
     mksslcert ssl/hipache/ssl/ssl.key ssl/hipache/ssl/ssl.crt '*.mydomain.com'
 
-Or this nice Docker Image: `cpuguy83/sslgen <https://hub.docker.com/r/cpuguy83/sslgen/>`_
+The `prologic/mksslcrt`_ image uses this tool to automatically created self-signed SSL
+certificates when run. Examples:
+
+Host mounted vlume::
+    
+    $ docker run --rm -v $(pwd):ssl:/ssl mksslcrt '*.mydomain.com'
+
+Data volume container::
+    
+    $ docker run --name sslcerts prologic/mksslcrt '*.mydomain.com'
+    $ docker run --volumes-from sslcerts prologic/hipache
+
+Or this nice Docker Image: `cpuguy83/sslgen`_.
+
+For signed certificates have a look at `starefossen/sslmate`_.

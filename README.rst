@@ -2,6 +2,7 @@
 .. _Docker Compose: https://github.com/docker/compose
 .. _autodock: https://github.com/prologic/autodock
 .. _autodock-paas: https://github.com/prologic/autodock-paas
+.. _autodock-paas image: https://hub.docker.com/r/prologic/autodock-paas/
 .. _PaaS: https://en.wikipedia.org/wiki/Platform_as_a_service
 .. _Stackfiles: https://stackfiles.io/registry/55e76bc25d8ffc010083bc92
 .. _prologic/mksslcrt: https://hub.docker.com/r/prologic/mksslcrt/
@@ -44,7 +45,7 @@ pointing to your ``hipache`` container you can now visit http://hello.local/
 
 .. note:: This method of hosting and managing webapps and websites is in production deployments and talked about in more detail in the post `A Docker-based mini-PaaS <http://shortcircuit.net.au/~prologic/blog/article/2015/03/24/a-docker-based-mini-paas/>`_.
 
-**Updated (20150914)**: We now provide a `autodock-paas image`_ that you can run to setup `autodock`_:
+**Updated (20150914)**: We now provide an `autodock-paas image`_ that you can run to setup `autodock`_:
 
 .. code-block:: bash
     

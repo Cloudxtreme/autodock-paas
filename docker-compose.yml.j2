@@ -1,0 +1,43 @@
+autodock:
+    image: prologic/autodock
+    volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+
+autodockcron:
+    image: prologic/autodock-cron
+    links:
+        - autodock
+    restart: always
+
+autodocklogger:
+    image: prologic/autodock-logger
+    links:
+        - autodock
+    restart: always
+
+autodockhipache:
+    image: prologic/autodock-hipache
+    links:
+        - autodock
+        - hipache:redis
+    restart: always
+
+sslcerts:
+    image: prologic/mksslcrt
+    command: "*.{{ DOMAIN }}"
+
+hipache:
+    image: prologic/hipache
+    ports:
+        - "80:80"
+        - "443:443"
+    volumes_from:
+        - sslcerts
+    restart: always
+
+hello:
+    image: prologic/hello
+    environment:
+        - VIRTUALHOST=hello.{{ DOMAIN }}
+    restart: always

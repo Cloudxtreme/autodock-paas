@@ -44,6 +44,23 @@ pointing to your ``hipache`` container you can now visit http://hello.local/
 
 .. note:: This method of hosting and managing webapps and websites is in production deployments and talked about in more detail in the post `A Docker-based mini-PaaS <http://shortcircuit.net.au/~prologic/blog/article/2015/03/24/a-docker-based-mini-paas/>`_.
 
+**Updated (20150914)**: We now provide a `autodock-paas image`_ that you can run to setup `autodock`_:
+
+.. code-block:: bash
+    
+    $ docker run -d -e DOMAIN=mydomain.com -v /var/run/docker.sock:/var/run/docker.sock prologic/autodock-paas
+
+Or as a `Docker Compose`_ service:
+
+.. code-block:: yaml
+    
+    autodockpaas:
+        image: prologic/autodock-paas
+        environment:
+            - DOMAIN=mydomain.com
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+
 Creating SSL Certificates
 -------------------------
 
@@ -57,7 +74,7 @@ Use either the ``mksslcert`` from the OpenSSL package. Example:
 The `prologic/mksslcrt`_ image uses this tool to automatically created self-signed SSL
 certificates when run. Examples:
 
-Host mounted vlume::
+Host mounted volume::
     
     $ docker run --rm -v $(pwd):ssl:/ssl mksslcrt '*.mydomain.com'
 

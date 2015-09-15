@@ -30,6 +30,23 @@ Now assuming you had `hello.local` configured in your `/etc/hosts` pointing to y
 >
 > This method of hosting and managing webapps and websites is in production deployments and talked about in more detail in the post [A Docker-based mini-PaaS](http://shortcircuit.net.au/~prologic/blog/article/2015/03/24/a-docker-based-mini-paas/).
 
+**Updated (20150914)**: We now provide a autodock-paas image\_ that you can run to setup [autodock](https://github.com/prologic/autodock):
+
+``` sourceCode
+$ docker run -d -e DOMAIN=mydomain.com -v /var/run/docker.sock:/var/run/docker.sock prologic/autodock-paas
+```
+
+Or as a [Docker Compose](https://github.com/docker/compose) service:
+
+``` sourceCode
+autodockpaas:
+    image: prologic/autodock-paas
+    environment:
+        - DOMAIN=mydomain.com
+    volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+```
+
 Creating SSL Certificates
 -------------------------
 
@@ -42,7 +59,7 @@ mksslcert ssl/hipache/ssl/ssl.key ssl/hipache/ssl/ssl.crt '*.mydomain.com'
 
 The [prologic/mksslcrt](https://hub.docker.com/r/prologic/mksslcrt/) image uses this tool to automatically created self-signed SSL certificates when run. Examples:
 
-Host mounted vlume:
+Host mounted volume:
 
     $ docker run --rm -v $(pwd):ssl:/ssl mksslcrt '*.mydomain.com'
 

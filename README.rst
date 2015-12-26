@@ -8,6 +8,7 @@
 .. _prologic/mksslcrt: https://hub.docker.com/r/prologic/mksslcrt/
 .. _cpuguy83/sslgen: https://hub.docker.com/r/cpuguy83/sslgen/
 .. _starefossen/sslmate: https://hub.docker.com/r/starefossen/sslmate/
+.. _a Docker-based mini-PaaS:  <http://shortcircuit.net.au/~prologic/blog/article/2015/03/24/a-docker-based-mini-paas/
 
 autodock-paas
 =============
@@ -32,20 +33,16 @@ environment variable and reconfigure the running ``hipache`` container.
 
 Start a "Hello World" Web Application::
     
-    $ docker run -d -e VIRTUALHOST=hello.local prologic/hello
-
-Now assuming you had ``hello.local`` configured in your ``/etc/hosts``
-pointing to your ``hipache`` container you can now visit http://hello.local/
-
-::
-    
-    echo "127.0.0.1 hello.local" >> /etc/hosts
-    curl -q -o - http://hello.local/
+    $ docker run -d -e VIRTUALHOST=hello.mydomain.com prologic/hello
+    curl -q -o - -H 'Host: hello.mydomain.com' http://localhost/
     Hello World!
 
-.. note:: This method of hosting and managing webapps and websites is in production deployments and talked about in more detail in the post `A Docker-based mini-PaaS <http://shortcircuit.net.au/~prologic/blog/article/2015/03/24/a-docker-based-mini-paas/>`_.
+.. note:: This method of hosting and managing webapps and websites is in
+          production deployments and talked about in more detail in the post
+          `A Docker-based mini-PaaS`_.
 
-**Updated (20150914)**: We now provide an `autodock-paas image`_ that you can run to setup `autodock`_:
+**Updated (20150914)**: We now provide an `autodock-paas image`_ that you can
+                        run to setup `autodock`_:
 
 .. code-block:: bash
     
@@ -56,11 +53,12 @@ Or as a `Docker Compose`_ service:
 .. code-block:: yaml
     
     autodockpaas:
-        image: prologic/autodock-paas
-        environment:
-            - DOMAIN=mydomain.com
-        volumes:
-            - /var/run/docker.sock:/var/run/docker.sock
+      image: prologic/autodock-paas
+      environment:
+        - DOMAIN=mydomain.com
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+      restart: always
 
 Creating SSL Certificates
 -------------------------
@@ -72,8 +70,8 @@ Use either the ``mksslcert`` from the OpenSSL package. Example:
     mkdir -p etc/hipache/ssl
     mksslcert ssl/hipache/ssl/ssl.key ssl/hipache/ssl/ssl.crt '*.mydomain.com'
 
-The `prologic/mksslcrt`_ image uses this tool to automatically created self-signed SSL
-certificates when run. Examples:
+The `prologic/mksslcrt`_ image uses this tool to automatically created
+self-signed SSL certificates when run. Examples:
 
 Host mounted volume::
     

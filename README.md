@@ -1,6 +1,8 @@
 autodock-paas
 =============
 
+[![Image Layers](https://badge.imagelayers.io/prologic/autodock-paas:latest.svg)](https://imagelayers.io/?images=prologic/autodock-paas:latest)
+
 This is the [autodock](https://github.com/prologic/autodock) based minimal [Docker](https://github.com/docker/docker) based [PaaS](https://en.wikipedia.org/wiki/Platform_as_a_service).
 
 [autodock-paas](https://github.com/prologic/autodock-paas) is MIT licensed.

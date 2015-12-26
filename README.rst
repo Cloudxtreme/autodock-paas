@@ -13,6 +13,10 @@
 autodock-paas
 =============
 
+.. image:: https://badge.imagelayers.io/prologic/autodock-paas:latest.svg
+   :target: https://imagelayers.io/?images=prologic/autodock-paas:latest
+   :alt: Image Layers
+
 This is the `autodock`_ based minimal `Docker`_ based `PaaS`_.
 
 `autodock-paas`_ is MIT licensed.
